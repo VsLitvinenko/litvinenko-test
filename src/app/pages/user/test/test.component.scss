@@ -1,0 +1,52 @@
+.container {
+  height: calc(100% - 65px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.test {
+  margin-top: 75px;
+}
+
+.form {
+  height: 400px;
+  margin-top: 10px;
+  label {
+    font-weight: bolder;
+  }
+}
+
+h2 {
+  margin-top: -50px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 10px;
+}
+
+button {
+  margin-top: 20px;
+  float: right;
+}
+
+.error {
+  color: #F44336;
+  font-weight: bolder;
+}
+
+.success {
+  color: #7B1FA2;
+  font-weight: bolder;
+}
+
+mat-spinner {
+  align-self: center;
+}

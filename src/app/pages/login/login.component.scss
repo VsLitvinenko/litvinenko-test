@@ -1,0 +1,26 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary {
+  color: #7B1FA2;
+}
+
+.example-form {
+  text-align: center;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+
+  mat-form-field {
+    margin: 5px;
+  }
+
+  button {
+    margin: 5px 5px 5px 60%;
+  }
+}

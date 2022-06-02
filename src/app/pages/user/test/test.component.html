@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="test"  *ngIf="loadCounter === 0; else loading">
+    <h1> Тест "{{title}}" </h1>
+
+    <mat-stepper linear="true">
+      <mat-step *ngFor="let item of questions; index as i">
+        <div class="form">
+          <ng-template matStepLabel>
+            <span [ngClass]="userRes.length !== 0 ? (userRes[i] ? 'success' : 'error') : ''">
+              Question {{i}} </span>
+          </ng-template>
+
+          <label [id]="i"> {{item.head}} </label>
+
+          <mat-radio-group *ngIf="item.answer !== undefined"
+                           [(ngModel)]="userAnswers[i]"
+                           [disabled]="userRes.length !== 0"
+                           class="example-radio-group">
+            <mat-radio-button class="example-radio-button"
+                              *ngFor="let q of item.body; index as j"
+                              [value]="j"> {{q}} </mat-radio-button>
+          </mat-radio-group>
+
+          <section class="example-radio-group" *ngIf="item.answers !== undefined">
+            <mat-checkbox class="example-radio-button"
+                          [disabled]="userRes.length !== 0"
+                          *ngFor="let q of item.body; index as j"
+                          [(ngModel)]="userAnswers[i][j]">
+              {{ q }}
+            </mat-checkbox>
+          </section>
+        </div>
+        <h2 *ngIf="userRes.length !== 0">
+          Правильный ответ - {{item.answers?.length ? item.answers?.join(', ') : item.answer}}
+        </h2>
+      </mat-step>
+    </mat-stepper>
+
+    <button mat-flat-button type="button" color="primary"
+            *ngIf="userRes.length === 0"
+            (click)="result()">
+      Завершить тестирование </button>
+  </div>
+
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+
+  <form class="example-form" *ngIf="loadCounter === 0; else loading">
+
+    <h1> Litvinenko Test App </h1>
+
+    <h3 *ngIf="isRetry" class="primary"> wrong user, try again </h3>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label> Email </mat-label>
+      <input type="email" matInput
+             [formControl]="emailControl" placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="emailControl.hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label> Password </mat-label>
+      <input type="password" matInput [formControl]="passwordControl">
+      <mat-error *ngIf="passwordControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="passwordControl.hasError('minLength')">
+        Min password length is <strong>10</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="button"
+            [disabled]="emailControl.invalid || passwordControl.invalid"
+            (click)="login()"> log in </button>
+
+  </form>
+
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>
